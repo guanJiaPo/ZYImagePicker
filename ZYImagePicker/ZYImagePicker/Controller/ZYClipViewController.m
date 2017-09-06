@@ -86,6 +86,9 @@
 - (void)setResizableClipArea:(BOOL)resizableClipArea {
     _resizableClipArea = resizableClipArea;
     self.clipView.resizableClipArea = resizableClipArea;
+    if (!resizableClipArea) {
+        self.clipView.frame = CGRectMake(0, 0, kScreen_Width, KScreen_Height - 64);
+    }
 }
 
 - (void)setClipSize:(CGSize)clipSize {

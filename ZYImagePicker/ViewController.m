@@ -61,7 +61,7 @@
         
         ZYImagePickerController *pickerCl = [[ZYImagePickerController alloc]init];
         __weak typeof(self)weakSelf = self;
-        pickerCl.resizableClipArea = NO;
+        pickerCl.resizableClipArea = YES;
         pickerCl.clipSize = self.clipedImageView.frame.size;
         pickerCl.borderColor = [UIColor orangeColor];
         pickerCl.borderWidth = 1;
@@ -92,8 +92,7 @@
 - (ZYImagePicker *)imagePicker {
     if (_imagePicker == nil) {
         _imagePicker = [[ZYImagePicker alloc]init];
-        _imagePicker = [[ZYImagePicker alloc]init];
-        _imagePicker.resizableClipArea = YES;
+        _imagePicker.resizableClipArea = NO;
         _imagePicker.clipSize = self.clipedImageView.frame.size;
         _imagePicker.borderColor = [UIColor orangeColor];
         _imagePicker.borderWidth = 1;

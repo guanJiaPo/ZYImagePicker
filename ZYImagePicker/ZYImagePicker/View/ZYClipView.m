@@ -71,7 +71,6 @@
     self.borderWidth = 1;
     self.padding = self.slideWidth + self.borderWidth;
     [self addSubview:self.scrollView];
-    //    [self addSubview:self.originalImageView];
     [self addSubview:self.clipBorderView];
 }
 
@@ -175,17 +174,6 @@
         self.clipBorderView.frame = self.bounds;
         [self.clipBorderView setNeedsDisplay];
     }
-    
-    
-//    if (self.resizableClipArea) {
-//        self.clipBorderView.visibleRect = self.scrollView.frame;
-//        self.clipBorderView.frame = CGRectMake(CGRectGetMinX(self.scrollView.frame) - self.padding, CGRectGetMinY(self.scrollView.frame) - self.padding, CGRectGetWidth(self.scrollView.frame) + self.padding * 2, CGRectGetHeight(self.scrollView.frame) + self.padding * 2);
-//        [self.clipBorderView setNeedsDisplay];
-//    } else {
-//        self.clipBorderView.visibleRect = CGRectMake(CGRectGetMidX(self.scrollView.frame) - containerW * 0.5, CGRectGetMidY(self.scrollView.frame) - containerH * 0.5, containerW, containerH);
-//        self.clipBorderView.frame = self.bounds;
-//        [self.clipBorderView setNeedsDisplay];
-//    }
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
