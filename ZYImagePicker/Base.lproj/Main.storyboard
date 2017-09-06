@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HqW-F5-Dtc">
+                                <rect key="frame" x="111" y="131" width="153" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="1Xc-Io-IBs"/>
+                                    <constraint firstAttribute="width" constant="153" id="64f-jx-NMj"/>
+                                </constraints>
+                                <state key="normal" title="拍照时使用系统相机"/>
+                                <connections>
+                                    <action selector="selectPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vm9-SP-EwC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f54-sl-zIU">
+                                <rect key="frame" x="111" y="179" width="153" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="153" id="SDT-uq-I97"/>
+                                    <constraint firstAttribute="height" constant="32" id="chi-RE-0gh"/>
+                                </constraints>
+                                <state key="normal" title="拍照时使用自定义相机"/>
+                                <connections>
+                                    <action selector="selectPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pdZ-d0-fvY"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pUs-8E-hSe">
+                                <rect key="frame" x="131" y="399" width="112.5" height="150"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="112.5" id="M0Z-JD-e6O"/>
+                                    <constraint firstAttribute="height" constant="150" id="Pel-fx-Wmx"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="f54-sl-zIU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1RL-Y6-ZYe"/>
+                            <constraint firstItem="f54-sl-zIU" firstAttribute="top" secondItem="HqW-F5-Dtc" secondAttribute="bottom" constant="16" id="A7e-M8-m0x"/>
+                            <constraint firstItem="HqW-F5-Dtc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="111" id="VOf-2Y-6wA"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pUs-8E-hSe" secondAttribute="bottom" constant="118" id="g6j-Sx-D7R"/>
+                            <constraint firstItem="HqW-F5-Dtc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tTF-NR-cxy"/>
+                            <constraint firstItem="pUs-8E-hSe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wni-JX-30S"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="clipedImageView" destination="pUs-8E-hSe" id="8r7-Q0-7yj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
+        </scene>
+    </scenes>
+</document>
