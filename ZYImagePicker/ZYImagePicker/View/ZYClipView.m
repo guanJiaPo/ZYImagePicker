@@ -63,7 +63,7 @@
 
 - (void)initData {
     self.resizableClipArea = NO;
-    self.clipSize = CGSizeMake(CGRectGetWidth(self.frame), CGRectGetWidth(self.frame) * 4 / 3);
+    self.clipSize = CGSizeMake(CGRectGetWidth(self.frame) - 16, (CGRectGetWidth(self.frame) - 16) * 4 / 3);
     self.slideWidth = 4;
     self.slideLength = 40;
     self.slideColor = [UIColor whiteColor];

@@ -140,8 +140,11 @@ typedef enum : NSUInteger {
     [[UIColor colorWithRed:0. green:0. blue:0. alpha:0.5] set];
     UIRectFill(self.bounds);
     
-    [[UIColor clearColor] set];
+    [self.borderColor setStroke];
+    [[UIColor clearColor] setFill];
+    CGContextSetLineWidth(contextRef, self.borderWidth);
     UIRectFill(CGRectMake(self.visibleRect.origin.x, self.visibleRect.origin.y, self.visibleRect.size.width, self.visibleRect.size.height));
+    UIRectFrame(CGRectMake(self.visibleRect.origin.x - self.borderWidth, self.visibleRect.origin.y - self.borderWidth, self.visibleRect.size.width + self.borderWidth * 2, self.visibleRect.size.height + self.borderWidth * 2));
     
     self.borderWithinView.frame = CGRectMake(CGRectGetMinX(self.visibleRect), CGRectGetMinY(self.visibleRect), CGRectGetWidth(self.visibleRect), CGRectGetHeight(self.visibleRect));
 }
@@ -384,10 +387,6 @@ typedef enum : NSUInteger {
         _clipBorders = [NSMutableArray arrayWithCapacity:0];
     }
     return _clipBorders;
-}
-
-- (void)dealloc {
-    NSLog(@"%s",__func__);
 }
 
 @end
