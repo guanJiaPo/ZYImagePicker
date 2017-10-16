@@ -63,7 +63,7 @@
 
 - (void)initData {
     self.resizableClipArea = NO;
-    self.clipSize = CGSizeMake(CGRectGetWidth(self.frame) - 16, (CGRectGetWidth(self.frame) - 16) * 4 / 3);
+    self.clipSize = CGSizeMake(CGRectGetWidth(self.frame) - 16, (CGRectGetWidth(self.frame) - 16) * 3 / 4);
     self.slideWidth = 4;
     self.slideLength = 40;
     self.slideColor = [UIColor whiteColor];
@@ -79,7 +79,7 @@
 
 - (UIImage *)clippedImage {
     //计算需要裁剪的尺寸
-    CGRect clipRect = [self withinRectForClipArea]; //!self.resizableClipArea ? [self withinRectForClipArea] : [self visibleRectForClipArea];
+    CGRect clipRect = [self withinRectForClipArea];
     
     // 改变图片方向
     CGAffineTransform rectTransform = [self orientationTransformedRectOfImage:self.originalImage];
@@ -135,11 +135,10 @@
     
     CGFloat containerW = CGRectGetWidth(self.frame);
     CGFloat containerH = CGRectGetHeight(self.frame);
-    CGFloat selfAspectRatio = containerW / containerH;
     CGFloat imageAspectRatio = self.originalImage.size.width / self.originalImage.size.height;
     
     if (self.resizableClipArea) {
-        if(imageAspectRatio > selfAspectRatio) {
+        if(imageAspectRatio > containerW/containerH) {
             CGFloat paddingTopBottom = floor((containerH - containerW / imageAspectRatio) / 2.0);
             self.scrollView.frame = CGRectMake(0, paddingTopBottom, containerW, floor(containerW / imageAspectRatio));
             self.scrollView.contentSize = CGSizeMake(containerW, floor(containerW / imageAspectRatio));
@@ -154,24 +153,37 @@
         self.clipBorderView.frame = CGRectMake(CGRectGetMinX(self.scrollView.frame) - self.padding, CGRectGetMinY(self.scrollView.frame) - self.padding, CGRectGetWidth(self.scrollView.frame) + self.padding * 2, CGRectGetHeight(self.scrollView.frame) + self.padding * 2);
         [self.clipBorderView setNeedsDisplay];
     } else {
-        containerW = self.clipSize.width;
-        containerH = self.clipSize.height;
-        
-        if(imageAspectRatio > selfAspectRatio) {
+        if (CGSizeEqualToSize(self.clipSize, CGSizeZero)) {
+            self.clipSize = CGSizeMake(CGRectGetWidth(self.frame) - 16, (CGRectGetWidth(self.frame) - 16) * 3 / 4);
+        }
+        self.clipBorderView.visibleRect = CGRectMake(CGRectGetMidX(self.frame) - self.clipSize.width * 0.5, CGRectGetMidY(self.frame) - self.clipSize.height * 0.5, self.clipSize.width, self.clipSize.height);
+        self.clipBorderView.frame = self.bounds;
+        self.scrollView.frame = self.clipBorderView.visibleRect;
+        if(imageAspectRatio > 1) {
             CGFloat paddingTopBottom = floor((containerH - containerW / imageAspectRatio) / 2.0);
-            self.scrollView.frame = CGRectMake(0, 0, containerW, containerH);
-            self.scrollView.center = self.center;
-            self.scrollView.contentSize = CGSizeMake(containerW, containerH);
-            self.originalImageView.frame = CGRectMake(0, paddingTopBottom, containerW, floor(containerW / imageAspectRatio));
+            // 图片是否能布满裁剪框
+            if (CGRectContainsRect(CGRectMake(0, paddingTopBottom, containerW, floor(containerW / imageAspectRatio)), self.clipBorderView.visibleRect)) {
+                self.scrollView.contentSize = CGSizeMake(containerW, floor(containerW / imageAspectRatio));
+                self.originalImageView.frame = CGRectMake(0, 0, containerW, floor(containerW / imageAspectRatio));
+                self.scrollView.contentOffset = CGPointMake(CGRectGetMinX(self.clipBorderView.visibleRect), CGRectGetMinY(self.clipBorderView.visibleRect) - paddingTopBottom);
+            } else { //图片尺寸比裁剪框小时, 填充裁剪框
+                self.scrollView.contentSize = CGSizeMake(floor(self.clipSize.height * imageAspectRatio), self.clipSize.height);
+                self.originalImageView.frame = CGRectMake(0, 0, floor(self.clipSize.height * imageAspectRatio), self.clipSize.height);
+                self.scrollView.contentOffset = CGPointMake((CGRectGetWidth(self.originalImageView.frame) - CGRectGetWidth(self.clipBorderView.visibleRect)) / 2 , 0);
+            }
         } else {
             CGFloat paddingLeftRight = floor((containerW - containerH * imageAspectRatio) / 2.0);
-            self.scrollView.frame = CGRectMake(0, 0, containerW, containerH);
-            self.scrollView.center = self.center;
-            self.scrollView.contentSize = CGSizeMake(containerW, containerH);
-            self.originalImageView.frame = CGRectMake(paddingLeftRight, 0, floor(containerH * imageAspectRatio), containerH);;
+            // 图片是否能布满裁剪框
+            if (CGRectContainsRect(CGRectMake(paddingLeftRight, 0, floor(containerH * imageAspectRatio), containerH), self.clipBorderView.visibleRect)) {
+                self.scrollView.contentSize = CGSizeMake(floor(containerH * imageAspectRatio), containerH);
+                self.originalImageView.frame = CGRectMake(0, 0, floor(containerH * imageAspectRatio), containerH);
+                self.scrollView.contentOffset = CGPointMake(CGRectGetMinX(self.clipBorderView.visibleRect) - paddingLeftRight, CGRectGetMinY(self.clipBorderView.visibleRect));
+            } else { //图片尺寸比裁剪框小时, 填充裁剪框
+                self.originalImageView.frame = CGRectMake(0, 0, self.clipSize.width, floor(self.clipSize.width / imageAspectRatio));
+                self.scrollView.contentSize = CGSizeMake(self.clipSize.width, floor(self.clipSize.width / imageAspectRatio));
+                self.scrollView.contentOffset = CGPointMake(0, (CGRectGetHeight(self.originalImageView.frame) - CGRectGetHeight(self.clipBorderView.visibleRect)) / 2);
+            }
         }
-        self.clipBorderView.visibleRect = CGRectMake(CGRectGetMidX(self.scrollView.frame) - containerW * 0.5, CGRectGetMidY(self.scrollView.frame) - containerH * 0.5, containerW, containerH);
-        self.clipBorderView.frame = self.bounds;
         [self.clipBorderView setNeedsDisplay];
     }
 }

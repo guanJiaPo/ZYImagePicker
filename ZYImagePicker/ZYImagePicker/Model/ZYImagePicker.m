@@ -29,6 +29,7 @@
         cameraController.slideColor = self.slideColor;
         cameraController.slideWidth = self.slideWidth;
         cameraController.slideLength = self.slideLength;
+        cameraController.didSelectedImageBlock = self.didSelectedImageBlock;
         __weak typeof(self)weakSelf = self;
         cameraController.clippedBlock = ^(UIImage *clippedImage) {
             [weakSelf clipped:clippedImage];
@@ -44,6 +45,7 @@
         pickerController.slideWidth = self.slideWidth;
         pickerController.slideLength = self.slideLength;
         pickerController.imageSorceType = sourceType_SavedPhotosAlbum;
+        pickerController.didSelectedImageBlock = self.didSelectedImageBlock;
         __weak typeof(self)weakSelf = self;
         pickerController.clippedBlock = ^(UIImage *clippedImage) {
             [weakSelf clipped:clippedImage];

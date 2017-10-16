@@ -270,6 +270,11 @@
 -(void)jumpImageView:(NSData *)data {
     
     UIImage *image = [UIImage imageWithData:data];
+    if (self.didSelectedImageBlock) {
+        if (!self.didSelectedImageBlock(image)) {
+            return;
+        }
+    }
     ZYClipViewController *clipViewController = [[ZYClipViewController alloc]init];
     clipViewController.resizableClipArea = self.resizableClipArea;
     clipViewController.clipSize = self.clipSize;

@@ -10,6 +10,7 @@
 
 #define kScreen_Width       [UIScreen  mainScreen].bounds.size.width
 #define KScreen_Height      [UIScreen  mainScreen].bounds.size.height
+#define kStatusBarHeight   [UIApplication sharedApplication].statusBarFrame.size.height
 
 @interface ZYClipViewController : UIViewController
 
@@ -37,8 +38,9 @@
 // 裁剪框滑块颜色
 @property (nonatomic, strong) UIColor *slideColor;
 
-// 裁剪完成的回调
 @property (nonatomic, copy) void (^cancelClipBlock)();
+
+// 裁剪完成的回调
 @property (nonatomic, copy) void (^clippedBlock)(UIImage *clippedImage);
 
 @end

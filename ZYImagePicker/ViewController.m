@@ -99,6 +99,9 @@
         _imagePicker.slideColor = [UIColor orangeColor];
         _imagePicker.slideWidth = 4;
         _imagePicker.slideLength = 40;
+        _imagePicker.didSelectedImageBlock = ^BOOL(UIImage *selectedImage) {
+            return YES;
+        };
         __weak typeof(self)weakSelf = self;
         _imagePicker.clippedBlock = ^(UIImage *clippedImage) {
             [weakSelf clipped:clippedImage];

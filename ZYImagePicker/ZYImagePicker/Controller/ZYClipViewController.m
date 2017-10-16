@@ -87,7 +87,7 @@
     _resizableClipArea = resizableClipArea;
     self.clipView.resizableClipArea = resizableClipArea;
     if (!resizableClipArea) {
-        self.clipView.frame = CGRectMake(0, 0, kScreen_Width, KScreen_Height - 64);
+        self.clipView.frame = CGRectMake(0, 0, kScreen_Width, KScreen_Height);
     }
 }
 
@@ -101,7 +101,7 @@
 - (ZYClipView *)clipView {
     if (_clipView == nil) {
         CGFloat padding = self.slideWidth + self.borderWidth <= 0 ? 5 : self.slideWidth + self.borderWidth;
-        _clipView = [[ZYClipView alloc]initWithFrame:CGRectMake(padding, 20, kScreen_Width - padding * 2, KScreen_Height - 84 - padding * 2)];
+        _clipView = [[ZYClipView alloc]initWithFrame:CGRectMake(padding, kStatusBarHeight, kScreen_Width - padding * 2, KScreen_Height - kStatusBarHeight - 64 - padding * 2)];
     }
     return _clipView;
 }

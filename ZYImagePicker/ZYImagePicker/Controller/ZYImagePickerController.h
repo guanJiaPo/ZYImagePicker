@@ -39,8 +39,13 @@ typedef enum : NSUInteger {
 // 裁剪框滑块颜色
 @property (nonatomic, strong) UIColor *slideColor;
 
+/**
+ * 点击了图片
+ * return  yes: 跳转下一步, 进行裁剪; no: 不跳转
+ */
+@property (nonatomic, copy) BOOL (^didSelectedImageBlock)(UIImage *selectedImage);
+
 // 裁剪完成的回调
 @property (nonatomic, copy) void (^clippedBlock)(UIImage *clippedImage);
-
 
 @end

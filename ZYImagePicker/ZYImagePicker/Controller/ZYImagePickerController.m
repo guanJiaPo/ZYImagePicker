@@ -53,7 +53,11 @@
 #pragma mark - 相册
 
 - (void)clipImage:(UIImage *)image {
-    
+    if (self.didSelectedImageBlock) {
+        if (!self.didSelectedImageBlock(image)) {
+            return;
+        }
+    }
     ZYClipViewController *clipViewController = [[ZYClipViewController alloc]init];
     clipViewController.resizableClipArea = self.resizableClipArea;
     clipViewController.clipSize = self.clipSize;
