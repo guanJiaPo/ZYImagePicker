@@ -15,7 +15,6 @@
 		5118835C1F4D5B2A00CC31DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5118835A1F4D5B2A00CC31DE /* LaunchScreen.storyboard */; };
 		511883671F4D5B2A00CC31DE /* ZYImagePickerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 511883661F4D5B2A00CC31DE /* ZYImagePickerTests.m */; };
 		511883721F4D5B2A00CC31DE /* ZYImagePickerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 511883711F4D5B2A00CC31DE /* ZYImagePickerUITests.m */; };
-		511883881F4D675200CC31DE /* SystemUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 511883871F4D675200CC31DE /* SystemUtils.m */; };
 		5118838B1F4D692400CC31DE /* ZYClipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5118838A1F4D692400CC31DE /* ZYClipViewController.m */; };
 		5118838E1F4D6D9E00CC31DE /* ZYClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5118838D1F4D6D9E00CC31DE /* ZYClipView.m */; };
 		511883911F4D78F600CC31DE /* ZYClipBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 511883901F4D78F600CC31DE /* ZYClipBorderView.m */; };
@@ -60,8 +59,6 @@
 		5118836D1F4D5B2A00CC31DE /* ZYImagePickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZYImagePickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		511883711F4D5B2A00CC31DE /* ZYImagePickerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYImagePickerUITests.m; sourceTree = "<group>"; };
 		511883731F4D5B2A00CC31DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		511883861F4D675200CC31DE /* SystemUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemUtils.h; sourceTree = "<group>"; };
-		511883871F4D675200CC31DE /* SystemUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemUtils.m; sourceTree = "<group>"; };
 		511883891F4D692400CC31DE /* ZYClipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYClipViewController.h; sourceTree = "<group>"; };
 		5118838A1F4D692400CC31DE /* ZYClipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYClipViewController.m; sourceTree = "<group>"; };
 		5118838C1F4D6D9E00CC31DE /* ZYClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYClipView.h; sourceTree = "<group>"; };
@@ -229,8 +226,6 @@
 			children = (
 				511883921F4D895400CC31DE /* UIView+Frame.h */,
 				511883931F4D895400CC31DE /* UIView+Frame.m */,
-				511883861F4D675200CC31DE /* SystemUtils.h */,
-				511883871F4D675200CC31DE /* SystemUtils.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -435,7 +430,6 @@
 				5118839E1F4FD0E200CC31DE /* ZYCameraController.m in Sources */,
 				5118838B1F4D692400CC31DE /* ZYClipViewController.m in Sources */,
 				511883911F4D78F600CC31DE /* ZYClipBorderView.m in Sources */,
-				511883881F4D675200CC31DE /* SystemUtils.m in Sources */,
 				5118834E1F4D5B2A00CC31DE /* main.m in Sources */,
 				5118839B1F4FC76000CC31DE /* ZYImagePicker.m in Sources */,
 				5118838E1F4D6D9E00CC31DE /* ZYClipView.m in Sources */,

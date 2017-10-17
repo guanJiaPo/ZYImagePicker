@@ -138,7 +138,7 @@
     CGFloat imageAspectRatio = self.originalImage.size.width / self.originalImage.size.height;
     
     if (self.resizableClipArea) {
-        if(imageAspectRatio > containerW/containerH) {
+        if(imageAspectRatio >= containerW/containerH - 0.05) {
             CGFloat paddingTopBottom = floor((containerH - containerW / imageAspectRatio) / 2.0);
             self.scrollView.frame = CGRectMake(0, paddingTopBottom, containerW, floor(containerW / imageAspectRatio));
             self.scrollView.contentSize = CGSizeMake(containerW, floor(containerW / imageAspectRatio));
@@ -159,7 +159,7 @@
         self.clipBorderView.visibleRect = CGRectMake(CGRectGetMidX(self.frame) - self.clipSize.width * 0.5, CGRectGetMidY(self.frame) - self.clipSize.height * 0.5, self.clipSize.width, self.clipSize.height);
         self.clipBorderView.frame = self.bounds;
         self.scrollView.frame = self.clipBorderView.visibleRect;
-        if(imageAspectRatio > 1) {
+        if(imageAspectRatio >= 0.95) {
             CGFloat paddingTopBottom = floor((containerH - containerW / imageAspectRatio) / 2.0);
             // 图片是否能布满裁剪框
             if (CGRectContainsRect(CGRectMake(0, paddingTopBottom, containerW, floor(containerW / imageAspectRatio)), self.clipBorderView.visibleRect)) {

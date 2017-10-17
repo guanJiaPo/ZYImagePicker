@@ -9,10 +9,10 @@
 #import "ZYImagePickerController.h"
 #import "ZYClipViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-#import "SystemUtils.h"
+#import <AVFoundation/AVFoundation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface ZYImagePickerController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
-
 
 @end
 
@@ -38,12 +38,12 @@
     self.allowsEditing = NO;
     
     if (self.imageSorceType == sourceType_camera) {
-        if (![SystemUtils isAppCameraAccessAuthorized]) {
+        if (![self isAppCameraAccessAuthorized]) {
             [self dismissViewControllerAnimated:NO completion:nil];
         };
         self.sourceType = UIImagePickerControllerSourceTypeCamera;
     } else {
-        if (![SystemUtils isAppPhotoLibraryAccessAuthorized]) {
+        if (![self isAppPhotoLibraryAccessAuthorized]) {
             [self dismissViewControllerAnimated:NO completion:nil];
         };
         self.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
@@ -51,6 +51,28 @@
 }
 
 #pragma mark - 相册
+
+- (BOOL)isAppCameraAccessAuthorized {
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        return NO;
+    }
+    
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if (authStatus == AVAuthorizationStatusRestricted || authStatus ==AVAuthorizationStatusDenied) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+- (BOOL)isAppPhotoLibraryAccessAuthorized {
+    ALAuthorizationStatus authStatus = [ALAssetsLibrary authorizationStatus];
+    if (authStatus == ALAuthorizationStatusRestricted || authStatus == ALAuthorizationStatusDenied) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
 
 - (void)clipImage:(UIImage *)image {
     if (self.didSelectedImageBlock) {
