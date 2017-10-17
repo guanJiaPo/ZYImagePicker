@@ -9,7 +9,6 @@
 #import "ZYImagePicker.h"
 #import "ZYCameraController.h"
 
-
 @implementation ZYImagePicker
 
 - (void)clipped:(UIImage *)image {
@@ -19,7 +18,6 @@
 }
 
 - (UIViewController *)imgaePickerController {
-    
     if (self.imageSorceType == sourceType_camera) {
         ZYCameraController *cameraController = [[ZYCameraController alloc]init];
         cameraController.resizableClipArea = self.resizableClipArea;

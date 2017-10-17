@@ -51,8 +51,7 @@
 
 @implementation ZYClipView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor blackColor];
@@ -74,13 +73,12 @@
     [self addSubview:self.clipBorderView];
 }
 
-
 #pragma mark - 裁剪
 
 - (UIImage *)clippedImage {
     //计算需要裁剪的尺寸
     CGRect clipRect = [self withinRectForClipArea];
-    
+
     // 改变图片方向
     CGAffineTransform rectTransform = [self orientationTransformedRectOfImage:self.originalImage];
     clipRect = CGRectApplyAffineTransform(clipRect, rectTransform);
@@ -136,9 +134,10 @@
     CGFloat containerW = CGRectGetWidth(self.frame);
     CGFloat containerH = CGRectGetHeight(self.frame);
     CGFloat imageAspectRatio = self.originalImage.size.width / self.originalImage.size.height;
+    CGFloat selfAspectRatio = containerW / containerH;
     
     if (self.resizableClipArea) {
-        if(imageAspectRatio >= containerW/containerH - 0.05) {
+        if(imageAspectRatio >= selfAspectRatio) {
             CGFloat paddingTopBottom = floor((containerH - containerW / imageAspectRatio) / 2.0);
             self.scrollView.frame = CGRectMake(0, paddingTopBottom, containerW, floor(containerW / imageAspectRatio));
             self.scrollView.contentSize = CGSizeMake(containerW, floor(containerW / imageAspectRatio));
@@ -159,7 +158,7 @@
         self.clipBorderView.visibleRect = CGRectMake(CGRectGetMidX(self.frame) - self.clipSize.width * 0.5, CGRectGetMidY(self.frame) - self.clipSize.height * 0.5, self.clipSize.width, self.clipSize.height);
         self.clipBorderView.frame = self.bounds;
         self.scrollView.frame = self.clipBorderView.visibleRect;
-        if(imageAspectRatio >= 0.95) {
+        if(imageAspectRatio >= selfAspectRatio) {
             CGFloat paddingTopBottom = floor((containerH - containerW / imageAspectRatio) / 2.0);
             // 图片是否能布满裁剪框
             if (CGRectContainsRect(CGRectMake(0, paddingTopBottom, containerW, floor(containerW / imageAspectRatio)), self.clipBorderView.visibleRect)) {
@@ -275,7 +274,7 @@
         [self.scrollView addSubview:self.originalImageView];
         self.scrollView.minimumZoomScale = CGRectGetWidth(self.scrollView.frame) / CGRectGetWidth(self.originalImageView.frame);
         self.scrollView.maximumZoomScale = 20.0;
-        [self.scrollView setZoomScale:1.0];
+        [self.scrollView setZoomScale:1.01];
     }
     return _scrollView;
 }

@@ -24,7 +24,16 @@
 
     [self.view addSubview:self.clipView];
     [self.view addSubview:self.bottomBar];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [UIApplication sharedApplication].statusBarHidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [UIApplication sharedApplication].statusBarHidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,7 +96,7 @@
     _resizableClipArea = resizableClipArea;
     self.clipView.resizableClipArea = resizableClipArea;
     if (!resizableClipArea) {
-        self.clipView.frame = CGRectMake(0, 0, kScreen_Width, KScreen_Height);
+        self.clipView.frame = CGRectMake(0, 0, [UIScreen  mainScreen].bounds.size.width, [UIScreen  mainScreen].bounds.size.height);
     }
 }
 
@@ -101,33 +110,34 @@
 - (ZYClipView *)clipView {
     if (_clipView == nil) {
         CGFloat padding = self.slideWidth + self.borderWidth <= 0 ? 5 : self.slideWidth + self.borderWidth;
-        _clipView = [[ZYClipView alloc]initWithFrame:CGRectMake(padding, kStatusBarHeight, kScreen_Width - padding * 2, KScreen_Height - kStatusBarHeight - 64 - padding * 2)];
+        _clipView = [[ZYClipView alloc]initWithFrame:CGRectMake(padding, padding, [UIScreen  mainScreen].bounds.size.width - padding * 2, [UIScreen  mainScreen].bounds.size.height - 64 - padding * 2)];
     }
     return _clipView;
 }
 
 - (UIToolbar *)bottomBar {
     if (_bottomBar == nil) {
-        _bottomBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, KScreen_Height - 64, kScreen_Width, 64)];
-
-        UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        fixedSpace.width = 16;
-        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        _bottomBar.barTintColor = [UIColor clearColor];
+        _bottomBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, [UIScreen  mainScreen].bounds.size.height - 64, [UIScreen  mainScreen].bounds.size.width, 64)];
+        _bottomBar.barStyle = UIBarStyleBlackTranslucent;
         
+        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         UIButton *cancleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        cancleButton.frame = CGRectMake(0, 0, 50, 32);
         [cancleButton setTitle:@"取消" forState:UIControlStateNormal];
+        cancleButton.titleLabel.font = [UIFont systemFontOfSize:18];
+        cancleButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        [cancleButton sizeToFit];
         [cancleButton addTarget:self action:@selector(cancelClip) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc]initWithCustomView:cancleButton];
         
         UIButton *enterButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        enterButton.frame = CGRectMake(0, 0, 50, 32);
         [enterButton setTitle:@"确认" forState:UIControlStateNormal];
+        enterButton.titleLabel.font = [UIFont systemFontOfSize:18];
+        enterButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        [enterButton sizeToFit];
         [enterButton addTarget:self action:@selector(enterClip) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *enterItem = [[UIBarButtonItem alloc]initWithCustomView:enterButton];
 
-        _bottomBar.items = @[fixedSpace,cancelItem,flexibleSpace,enterItem,fixedSpace];
+        _bottomBar.items = @[cancelItem,flexibleSpace,enterItem];
     }
     return _bottomBar;
 }

@@ -7,7 +7,7 @@
 //
 
 #import "ZYClipBorderView.h"
-#import "UIView+Frame.h"
+//#import "UIView+Frame.h"
 
 static CGFloat kSlideWith = 40;
 
@@ -226,14 +226,16 @@ typedef enum : NSUInteger {
 
 - (void) getStartTouchStyleWithStartPoint:(CGPoint)startPoint {
     
+    CGFloat width = CGRectGetWidth(self.frame);
+    CGFloat height = CGRectGetHeight(self.frame);
     CGRect topLeftRect = CGRectMake(0, 0, kSlideWith, kSlideWith);
-    CGRect topRightRect = CGRectMake(self.width - kSlideWith, 0, kSlideWith, kSlideWith);
-    CGRect bottomLeftRect = CGRectMake(0, self.height - kSlideWith, kSlideWith, kSlideWith);
-    CGRect bottomRightRect = CGRectMake(self.width - kSlideWith, self.height - kSlideWith, kSlideWith, kSlideWith);
-    CGRect topMidRect = CGRectMake((self.width - kSlideWith) / 2, 0, kSlideWith, kSlideWith / 2);
-    CGRect leftMidRect = CGRectMake(0, (self.height - kSlideWith) / 2, kSlideWith, kSlideWith);
-    CGRect bottomMidRect = CGRectMake((self.width - kSlideWith) / 2, self.height - kSlideWith / 2, kSlideWith, kSlideWith / 2);
-    CGRect rightMidRect = CGRectMake(self.width - kSlideWith, (self.height - kSlideWith) / 2, kSlideWith, kSlideWith);
+    CGRect topRightRect = CGRectMake(width - kSlideWith, 0, kSlideWith, kSlideWith);
+    CGRect bottomLeftRect = CGRectMake(0, height - kSlideWith, kSlideWith, kSlideWith);
+    CGRect bottomRightRect = CGRectMake(width - kSlideWith, height - kSlideWith, kSlideWith, kSlideWith);
+    CGRect topMidRect = CGRectMake((width - kSlideWith) / 2, 0, kSlideWith, kSlideWith / 2);
+    CGRect leftMidRect = CGRectMake(0, (height - kSlideWith) / 2, kSlideWith, kSlideWith);
+    CGRect bottomMidRect = CGRectMake((width - kSlideWith) / 2, height - kSlideWith / 2, kSlideWith, kSlideWith / 2);
+    CGRect rightMidRect = CGRectMake(width - kSlideWith, (height - kSlideWith) / 2, kSlideWith, kSlideWith);
     
     if (CGRectContainsPoint(topLeftRect, startPoint)) {
         self.startTouchStyle = layerStyle_topLeft;
@@ -268,51 +270,57 @@ typedef enum : NSUInteger {
     CGFloat subX = curpoint.x - prePoint.x;
     CGFloat subY = curpoint.y - prePoint.y;
     CGRect newFrame = CGRectMake(0, 0, kSlideWith * 2, kSlideWith * 2);
+    CGFloat width = CGRectGetWidth(self.frame);
+    CGFloat height = CGRectGetHeight(self.frame);
+    CGFloat left = CGRectGetMinX(self.frame);
+    CGFloat top = CGRectGetMinY(self.frame);
+    
     switch (self.startTouchStyle) {
         case layerStyle_topLeft:
-            newFrame = CGRectMake(self.left + subX, self.top + subY, self.width - subX, self.height - subY);
+            newFrame = CGRectMake(left + subX, top + subY, width - subX, height - subY);
             break;
         case layerStyle_topRight:
-            newFrame = CGRectMake(self.left, self.top + subY, self.width + subX, self.height - subY);
+            newFrame = CGRectMake(left, top + subY, width + subX, height - subY);
             break;
         case layerStyle_bottomLeft:
-            newFrame = CGRectMake(self.left + subX, self.top, self.width - subX, self.height + subY);
+            newFrame = CGRectMake(left + subX, top, width - subX, height + subY);
             break;
         case layerStyle_bottomRight:
-            newFrame = CGRectMake(self.left, self.top, self.width + subX, self.height + subY);
+            newFrame = CGRectMake(left, top, width + subX, height + subY);
             break;
         case layerStyle_topMid:
-            newFrame = CGRectMake(self.left, self.top + subY, self.width, self.height - subY);
+            newFrame = CGRectMake(left, top + subY, width, height - subY);
             break;
         case layerStyle_leftMid:
-            newFrame = CGRectMake(self.left + subX, self.top, self.width - subX, self.height);
+            newFrame = CGRectMake(left + subX, top, width - subX, height);
             break;
         case layerStyle_bottomMid:
-            newFrame = CGRectMake(self.left, self.top, self.width, self.height + subY);
+            newFrame = CGRectMake(left, top, width, height + subY);
             break;
         case layerStyle_rightMid:
-            newFrame = CGRectMake(self.left, self.top, self.width + subX, self.height);
+            newFrame = CGRectMake(left, top, width + subX, height);
             break;
         case layerStyle_border: {
             //让View移动
             self.transform = CGAffineTransformTranslate(self.transform, subX, subY);
             //设置边界
-            if (self.top < CGRectGetMinY(self.visibleRect) - self.padding) {
-                self.top = CGRectGetMinY(self.visibleRect) - self.padding;
-            }else if (self.bottom > CGRectGetMaxY(self.visibleRect) + self.padding) {
-                self.bottom = CGRectGetMaxY(self.visibleRect) + self.padding;
+            CGRect frame = self.frame;
+            if (CGRectGetMinY(self.frame) < CGRectGetMinY(self.visibleRect) - self.padding) {
+                frame.origin.y = CGRectGetMinY(self.visibleRect) - self.padding;
+            }else if (CGRectGetMaxY(self.frame) > CGRectGetMaxY(self.visibleRect) + self.padding) {
+                frame.origin.y = CGRectGetMaxY(self.visibleRect) + self.padding - frame.size.height;
             }
-            if (self.left < CGRectGetMinX(self.visibleRect) - self.padding) {
-                self.left = CGRectGetMinX(self.visibleRect) - self.padding;
-            }else if (self.right > CGRectGetMaxX(self.visibleRect) + self.padding){
-                self.right = CGRectGetMaxX(self.visibleRect) + self.padding;
+            if (CGRectGetMinX(self.frame) < CGRectGetMinX(self.visibleRect) - self.padding) {
+                frame.origin.x = CGRectGetMinX(self.visibleRect) - self.padding;
+            }else if (CGRectGetMaxX(self.frame) > CGRectGetMaxX(self.visibleRect) + self.padding) {
+                frame.origin.x = CGRectGetMaxX(self.visibleRect) + self.padding - frame.size.width;
             }
+            self.frame = frame;
             newFrame = self.frame;
         } break;
         default:
             break;
     }
-//    NSLog(@"curpointX: %f, curpointY: %f\nprePointX: %f, prePointY: %f",curpoint.x,curpoint.y,prePoint.x,prePoint.y);
 
     [self resetClipViewFrame:newFrame];
 }

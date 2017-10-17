@@ -58,38 +58,36 @@
 @property (nonatomic, strong) UIButton  *flashOnButton;
 @property (nonatomic, strong) UIButton  *flashOffButton;
 
-
 @end
 
 @implementation ZYCameraController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     [self initAVCaptureSession];
     [self setUpGesture];
     [self.view addSubview:self.topBar];
     [self.view addSubview:self.bottomBar];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    
+    [UIApplication sharedApplication].statusBarHidden = YES;
     if (self.session) {
         [self.session startRunning];
     }
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [UIApplication sharedApplication].statusBarHidden = NO;
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:YES];
-    
     if (self.session) {
         [self.session stopRunning];
     }
-}
-
-- (BOOL)prefersStatusBarHidden{
-    return YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -99,14 +97,10 @@
 
 #pragma mark - private
 
-- (void)initAVCaptureSession{
-    
+- (void)initAVCaptureSession {
     self.session = [[AVCaptureSession alloc] init];
-    
     NSError *error;
-    
     self.effectiveScale = 1.0;
-    
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     [self changeFlashStatusWithType:2];
     
@@ -129,8 +123,7 @@
     //初始化预览图层
     self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
     [self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    
-    self.previewLayer.frame = CGRectMake(0, 40,kScreen_Width, KScreen_Height - 116);
+    self.previewLayer.frame = CGRectMake(0, 40,[UIScreen  mainScreen].bounds.size.width, [UIScreen  mainScreen].bounds.size.height - 116);
     self.view.layer.masksToBounds = YES;
     [self.view.layer addSublayer:self.previewLayer];
     
@@ -138,15 +131,13 @@
 }
 
 //添加手势
-- (void)setUpGesture
-{
+- (void)setUpGesture {
     UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)];
     [self.view addGestureRecognizer:pinch];
 }
 
 //自动聚焦、曝光
 - (BOOL)resetFocusAndExposureModes {
-    
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     AVCaptureExposureMode exposureMode = AVCaptureExposureModeContinuousAutoExposure;
     AVCaptureFocusMode focusMode = AVCaptureFocusModeContinuousAutoFocus;
@@ -188,7 +179,7 @@
 }
 
 // 根据前后置位置拿到相应的摄像头
-- (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition)position{
+- (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition)position {
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     for ( AVCaptureDevice *device in devices ) {
         if (device.position == position) {
@@ -199,7 +190,6 @@
 }
 
 - (void)changeCamera {
-    
     NSUInteger cameraCount = [[AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo] count];
     if (cameraCount > 1) {
         NSError *error;
@@ -268,7 +258,6 @@
 
 ///MARK: 拍照之后跳到裁剪页面
 -(void)jumpImageView:(NSData *)data {
-    
     UIImage *image = [UIImage imageWithData:data];
     if (self.didSelectedImageBlock) {
         if (!self.didSelectedImageBlock(image)) {
@@ -312,8 +301,7 @@
 
 #pragma mark - event
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch = touches.anyObject;
     CGPoint point = [touch locationInView:self.view];
     [self focusAtPoint:point];
@@ -355,14 +343,12 @@
     }
 }
 
-- (void)cancleCamera
-{
+- (void)cancleCamera {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 ///MARK: 照相
 - (void)takePhotoButtonClicked {
-    
     _stillImageConnection = [self.stillImageOutput connectionWithMediaType:AVMediaTypeVideo];
     UIDeviceOrientation curDeviceOrientation = [[UIDevice currentDevice] orientation];
     AVCaptureVideoOrientation avcaptureOrientation = [self avOrientationForDeviceOrientation:curDeviceOrientation];
@@ -389,13 +375,13 @@
         [device lockForConfiguration:nil];
         if (type == 0) {
             device.flashMode = AVCaptureFlashModeOff;
-            [self.flashStatusButton setImage:[UIImage imageNamed:@"flashOff"] forState:UIControlStateNormal];
+            [self.flashStatusButton setImage:[UIImage imageNamed:@"Camera.bundle/flashOff"] forState:UIControlStateNormal];
         } else if (type == 1) {
             device.flashMode = AVCaptureFlashModeOn;
-            [self.flashStatusButton setImage:[UIImage imageNamed:@"flashOn"] forState:UIControlStateNormal];
+            [self.flashStatusButton setImage:[UIImage imageNamed:@"Camera.bundle/flashOn"] forState:UIControlStateNormal];
         } else if (type == 2) {
             device.flashMode = AVCaptureFlashModeAuto;
-            [self.flashStatusButton setImage:[UIImage imageNamed:@"flashAuto"] forState:UIControlStateNormal];
+            [self.flashStatusButton setImage:[UIImage imageNamed:@"Camera.bundle/flashAuto"] forState:UIControlStateNormal];
         }
         [device unlockForConfiguration];
     }
@@ -431,29 +417,31 @@
 
 - (UIToolbar *)bottomBar {
     if (_bottomBar == nil) {
-        _bottomBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, KScreen_Height - 76, kScreen_Width, 76)];
+        _bottomBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, [UIScreen  mainScreen].bounds.size.height - 76, [UIScreen  mainScreen].bounds.size.width, 76)];
         _bottomBar.barTintColor = [UIColor clearColor];
         _bottomBar.tintColor = [UIColor whiteColor];
 
         UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         
         UIButton *cancleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        cancleButton.frame = CGRectMake(0, 0, 38, 34);
         [cancleButton setTitle:@"取消" forState:UIControlStateNormal];
+        cancleButton.titleLabel.font = [UIFont systemFontOfSize:18];
+        cancleButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        [cancleButton sizeToFit];
         [cancleButton addTarget:self action:@selector(cancleCamera) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc]initWithCustomView:cancleButton];
         
         UIButton *takePhotoButton = [UIButton buttonWithType:UIButtonTypeCustom];
         takePhotoButton.frame = CGRectMake(0, 0, 68, 68);
-        [takePhotoButton setBackgroundImage:[UIImage imageNamed:@"takePhoto"] forState:UIControlStateNormal];
-        [takePhotoButton setBackgroundImage:[UIImage imageNamed:@"takePhoto_highlighted"] forState:UIControlStateHighlighted];
+        [takePhotoButton setBackgroundImage:[UIImage imageNamed:@"Camera.bundle/takePhoto"] forState:UIControlStateNormal];
+        [takePhotoButton setBackgroundImage:[UIImage imageNamed:@"Camera.bundle/takePhoto_highlighted"] forState:UIControlStateHighlighted];
         [takePhotoButton addTarget:self action:@selector(takePhotoButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *takePhotoItem = [[UIBarButtonItem alloc]initWithCustomView:takePhotoButton];
         
         UIButton *positionButton = [UIButton buttonWithType:UIButtonTypeCustom];
         positionButton.frame = CGRectMake(0, 0, 34, 26);
-        [positionButton setBackgroundImage:[UIImage imageNamed:@"changePosition"] forState:UIControlStateNormal];
-        [positionButton setBackgroundImage:[UIImage imageNamed:@"changePosition_highLighted"] forState:UIControlStateHighlighted];
+        [positionButton setBackgroundImage:[UIImage imageNamed:@"Camera.bundle/changePosition"] forState:UIControlStateNormal];
+        [positionButton setBackgroundImage:[UIImage imageNamed:@"Camera.bundle/changePosition_highLighted"] forState:UIControlStateHighlighted];
         [positionButton addTarget:self action:@selector(changePositionClicked:) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *positionItem = [[UIBarButtonItem alloc]initWithCustomView:positionButton];
         _bottomBar.items = @[cancelItem,flexibleSpace,takePhotoItem,flexibleSpace,positionItem];
@@ -463,7 +451,7 @@
 
 - (UIToolbar *)topBar {
     if (_topBar == nil) {
-        _topBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, 40)];
+        _topBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, [UIScreen  mainScreen].bounds.size.width, 40)];
         _topBar.barTintColor = [UIColor clearColor];
         _topBar.tintColor = [UIColor whiteColor];
         UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
