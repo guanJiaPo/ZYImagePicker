@@ -42,7 +42,7 @@
         pickerController.slideColor = self.slideColor;
         pickerController.slideWidth = self.slideWidth;
         pickerController.slideLength = self.slideLength;
-        pickerController.imageSorceType = sourceType_SavedPhotosAlbum;
+        pickerController.imageSorceType = self.imageSorceType;
         pickerController.didSelectedImageBlock = self.didSelectedImageBlock;
         __weak typeof(self)weakSelf = self;
         pickerController.clippedBlock = ^(UIImage *clippedImage) {
@@ -53,5 +53,27 @@
     
     return _imgaePickerController;
 }
+
+//- (BOOL)isAppCameraAccessAuthorized {
+//    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+//        return NO;
+//    }
+//    
+//    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+//    if (authStatus == AVAuthorizationStatusRestricted || authStatus ==AVAuthorizationStatusDenied) {
+//        return NO;
+//    } else {
+//        return YES;
+//    }
+//}
+//
+//- (BOOL)isAppPhotoLibraryAccessAuthorized {
+//    ALAuthorizationStatus authStatus = [ALAssetsLibrary authorizationStatus];
+//    if (authStatus == ALAuthorizationStatusRestricted || authStatus == ALAuthorizationStatusDenied) {
+//        return NO;
+//    } else {
+//        return YES;
+//    }
+//}
 
 @end
