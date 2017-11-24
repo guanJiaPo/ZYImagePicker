@@ -252,7 +252,9 @@
     if (self.clippedBlock) {
         self.clippedBlock(image);
     }
-    [self saveImageToPhotoAlbum:image];
+    if (self.saveClipedImage) {
+        [self saveImageToPhotoAlbum:image];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

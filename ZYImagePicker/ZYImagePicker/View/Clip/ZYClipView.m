@@ -62,7 +62,7 @@
 
 - (void)initData {
     self.resizableClipArea = NO;
-    self.clipSize = CGSizeMake(CGRectGetWidth(self.frame) - 16, (CGRectGetWidth(self.frame) - 16) * 3 / 4);
+    self.clipSize = CGSizeMake(CGRectGetWidth(self.frame) - 2, (CGRectGetWidth(self.frame) - 2) * 3 / 4);
     self.slideWidth = 4;
     self.slideLength = 40;
     self.slideColor = [UIColor whiteColor];
@@ -153,7 +153,7 @@
         [self.clipBorderView setNeedsDisplay];
     } else {
         if (CGSizeEqualToSize(self.clipSize, CGSizeZero)) {
-            self.clipSize = CGSizeMake(CGRectGetWidth(self.frame) - 16, (CGRectGetWidth(self.frame) - 16) * 3 / 4);
+            self.clipSize = CGSizeMake(CGRectGetWidth(self.frame) - 2, (CGRectGetWidth(self.frame) - 2) * 3 / 4);
         }
         self.clipBorderView.visibleRect = CGRectMake(CGRectGetMidX(self.frame) - self.clipSize.width * 0.5, CGRectGetMidY(self.frame) - self.clipSize.height * 0.5, self.clipSize.width, self.clipSize.height);
         self.clipBorderView.frame = self.bounds;

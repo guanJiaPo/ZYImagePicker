@@ -45,41 +45,39 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 2) return;
     
-    if (self.type == 1) { /// 拍照时使用自定义相机
-        
+    if (self.type == 1) { /// 自定义相机/相册
+        self.imagePicker.resizableClipArea = NO;
         if (buttonIndex == 0) {
             //  拍照
+            self.imagePicker.isCustomCamera = YES;
             self.imagePicker.imageSorceType = sourceType_camera;
         } else if (buttonIndex == 1) {
             //  相册
+            self.imagePicker.isCustomImagePicker = YES;
             self.imagePicker.imageSorceType = sourceType_SavedPhotosAlbum;
         }
         
-        [self presentViewController:self.imagePicker.imgaePickerController animated:YES completion:nil];
-        
-    } else { /// 拍照时使用系统相机
-        
-        ZYImagePickerController *pickerCl = [[ZYImagePickerController alloc]init];
-        __weak typeof(self)weakSelf = self;
-        pickerCl.resizableClipArea = YES;
-        pickerCl.clipSize = self.clipedImageView.frame.size;
-        pickerCl.borderColor = [UIColor orangeColor];
-        pickerCl.borderWidth = 1;
-        pickerCl.slideColor = [UIColor orangeColor];
-        pickerCl.slideWidth = 4;
-        pickerCl.slideLength = 40;
-        pickerCl.clippedBlock = ^(UIImage *clippedImage) {
-            [weakSelf clipped:clippedImage];
-        };
+    } else { /// 使用系统相机/相册
+        self.imagePicker.resizableClipArea = YES;
         if (buttonIndex == 0) {
             //  拍照
-            pickerCl.imageSorceType = sourceType_camera;
+            self.imagePicker.imageSorceType = sourceType_camera;
+            self.imagePicker.isCustomCamera = NO;
         } else if (buttonIndex == 1) {
             //  相册
-            pickerCl.imageSorceType = sourceType_SavedPhotosAlbum;
+            self.imagePicker.imageSorceType = sourceType_SavedPhotosAlbum;
+            self.imagePicker.isCustomImagePicker = NO;
         }
-        [self presentViewController:pickerCl animated:YES completion:nil];
-
+    }
+    
+    if (self.imagePicker.isSupportSelectedType) {
+        [self presentViewController:self.imagePicker.pickerController animated:YES completion:nil];
+    } else {
+        if (self.imagePicker.imageSorceType == sourceType_camera) {
+            NSLog(@"请在iPhone的“设置->隐私->相机”中打开本应用的访问权限");
+        } else {
+            NSLog(@"请在iPhone的“设置->隐私->照片”中打开本应用的访问权限");
+        }
     }
 }
 

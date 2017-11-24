@@ -15,14 +15,19 @@
 		5118835C1F4D5B2A00CC31DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5118835A1F4D5B2A00CC31DE /* LaunchScreen.storyboard */; };
 		511883671F4D5B2A00CC31DE /* ZYImagePickerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 511883661F4D5B2A00CC31DE /* ZYImagePickerTests.m */; };
 		511883721F4D5B2A00CC31DE /* ZYImagePickerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 511883711F4D5B2A00CC31DE /* ZYImagePickerUITests.m */; };
+		512576391FC805C3004A06BB /* ZYClipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5125761A1FC805C3004A06BB /* ZYClipViewController.m */; };
+		5125763A1FC805C3004A06BB /* ZYImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5125761C1FC805C3004A06BB /* ZYImagePickerController.m */; };
+		5125763B1FC805C3004A06BB /* ZYCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 512576211FC805C3004A06BB /* ZYCameraController.m */; };
+		5125763C1FC805C3004A06BB /* ZYImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 512576221FC805C3004A06BB /* ZYImageController.m */; };
+		5125763D1FC805C3004A06BB /* ZYImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 512576261FC805C3004A06BB /* ZYImagePicker.m */; };
+		5125763E1FC805C3004A06BB /* ZYPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 512576291FC805C3004A06BB /* ZYPhoto.m */; };
+		5125763F1FC805C3004A06BB /* ZYClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5125762E1FC805C3004A06BB /* ZYClipView.m */; };
+		512576401FC805C3004A06BB /* ZYClipBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5125762F1FC805C3004A06BB /* ZYClipBorderView.m */; };
+		512576411FC805C3004A06BB /* ZYImageTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 512576331FC805C3004A06BB /* ZYImageTopBar.m */; };
+		512576421FC805C3004A06BB /* ZYImageReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 512576341FC805C3004A06BB /* ZYImageReusableView.m */; };
+		512576431FC805C3004A06BB /* ZYImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 512576351FC805C3004A06BB /* ZYImageCell.m */; };
+		512576441FC805C3004A06BB /* Camera.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 512576381FC805C3004A06BB /* Camera.bundle */; };
 		513152141F9605F30029052E /* ZYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 513152131F9605F30029052E /* ZYNavigationController.m */; };
-		513152151F9606160029052E /* ZYCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 513152031F9605F30029052E /* ZYCameraController.m */; };
-		513152161F9606160029052E /* ZYClipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 513152051F9605F30029052E /* ZYClipViewController.m */; };
-		513152171F9606160029052E /* ZYImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 513152071F9605F30029052E /* ZYImagePickerController.m */; };
-		513152181F9606160029052E /* ZYImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5131520A1F9605F30029052E /* ZYImagePicker.m */; };
-		513152191F9606160029052E /* ZYClipBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5131520F1F9605F30029052E /* ZYClipBorderView.m */; };
-		5131521A1F9606160029052E /* ZYClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 513152111F9605F30029052E /* ZYClipView.m */; };
-		5131521B1F9606210029052E /* Camera.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5131520C1F9605F30029052E /* Camera.bundle */; };
 		FA9C1F7D234CF1A38C7E3A54 /* libPods-ZYImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7F42B7BA9869068EFBA169 /* libPods-ZYImagePicker.a */; };
 /* End PBXBuildFile section */
 
@@ -60,19 +65,29 @@
 		5118836D1F4D5B2A00CC31DE /* ZYImagePickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZYImagePickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		511883711F4D5B2A00CC31DE /* ZYImagePickerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYImagePickerUITests.m; sourceTree = "<group>"; };
 		511883731F4D5B2A00CC31DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		513152021F9605F30029052E /* ZYCameraController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYCameraController.h; sourceTree = "<group>"; };
-		513152031F9605F30029052E /* ZYCameraController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYCameraController.m; sourceTree = "<group>"; };
-		513152041F9605F30029052E /* ZYClipViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYClipViewController.h; sourceTree = "<group>"; };
-		513152051F9605F30029052E /* ZYClipViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYClipViewController.m; sourceTree = "<group>"; };
-		513152061F9605F30029052E /* ZYImagePickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYImagePickerController.h; sourceTree = "<group>"; };
-		513152071F9605F30029052E /* ZYImagePickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYImagePickerController.m; sourceTree = "<group>"; };
-		513152091F9605F30029052E /* ZYImagePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYImagePicker.h; sourceTree = "<group>"; };
-		5131520A1F9605F30029052E /* ZYImagePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYImagePicker.m; sourceTree = "<group>"; };
-		5131520C1F9605F30029052E /* Camera.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Camera.bundle; sourceTree = "<group>"; };
-		5131520E1F9605F30029052E /* ZYClipBorderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYClipBorderView.h; sourceTree = "<group>"; };
-		5131520F1F9605F30029052E /* ZYClipBorderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYClipBorderView.m; sourceTree = "<group>"; };
-		513152101F9605F30029052E /* ZYClipView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYClipView.h; sourceTree = "<group>"; };
-		513152111F9605F30029052E /* ZYClipView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYClipView.m; sourceTree = "<group>"; };
+		512576191FC805C3004A06BB /* ZYClipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYClipViewController.h; sourceTree = "<group>"; };
+		5125761A1FC805C3004A06BB /* ZYClipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYClipViewController.m; sourceTree = "<group>"; };
+		5125761C1FC805C3004A06BB /* ZYImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImagePickerController.m; sourceTree = "<group>"; };
+		5125761D1FC805C3004A06BB /* ZYImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYImagePickerController.h; sourceTree = "<group>"; };
+		5125761F1FC805C3004A06BB /* ZYCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCameraController.h; sourceTree = "<group>"; };
+		512576201FC805C3004A06BB /* ZYImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYImageController.h; sourceTree = "<group>"; };
+		512576211FC805C3004A06BB /* ZYCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCameraController.m; sourceTree = "<group>"; };
+		512576221FC805C3004A06BB /* ZYImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImageController.m; sourceTree = "<group>"; };
+		512576251FC805C3004A06BB /* ZYImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYImagePicker.h; sourceTree = "<group>"; };
+		512576261FC805C3004A06BB /* ZYImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImagePicker.m; sourceTree = "<group>"; };
+		512576281FC805C3004A06BB /* ZYPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYPhoto.h; sourceTree = "<group>"; };
+		512576291FC805C3004A06BB /* ZYPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYPhoto.m; sourceTree = "<group>"; };
+		5125762C1FC805C3004A06BB /* ZYClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYClipView.h; sourceTree = "<group>"; };
+		5125762D1FC805C3004A06BB /* ZYClipBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYClipBorderView.h; sourceTree = "<group>"; };
+		5125762E1FC805C3004A06BB /* ZYClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYClipView.m; sourceTree = "<group>"; };
+		5125762F1FC805C3004A06BB /* ZYClipBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYClipBorderView.m; sourceTree = "<group>"; };
+		512576311FC805C3004A06BB /* ZYImageReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYImageReusableView.h; sourceTree = "<group>"; };
+		512576321FC805C3004A06BB /* ZYImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYImageCell.h; sourceTree = "<group>"; };
+		512576331FC805C3004A06BB /* ZYImageTopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImageTopBar.m; sourceTree = "<group>"; };
+		512576341FC805C3004A06BB /* ZYImageReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImageReusableView.m; sourceTree = "<group>"; };
+		512576351FC805C3004A06BB /* ZYImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImageCell.m; sourceTree = "<group>"; };
+		512576361FC805C3004A06BB /* ZYImageTopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYImageTopBar.h; sourceTree = "<group>"; };
+		512576381FC805C3004A06BB /* Camera.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Camera.bundle; sourceTree = "<group>"; };
 		513152121F9605F30029052E /* ZYNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYNavigationController.h; sourceTree = "<group>"; };
 		513152131F9605F30029052E /* ZYNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYNavigationController.m; sourceTree = "<group>"; };
 		617F69F1C6222684BB15ADD3 /* Pods-ZYImagePicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZYImagePicker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZYImagePicker/Pods-ZYImagePicker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,7 +163,7 @@
 		5118834B1F4D5B2900CC31DE /* ZYImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				513152001F9605F30029052E /* ZYImagePicker */,
+				512576161FC805C3004A06BB /* ZYImagePicker */,
 				513152121F9605F30029052E /* ZYNavigationController.h */,
 				513152131F9605F30029052E /* ZYNavigationController.m */,
 				5118834F1F4D5B2A00CC31DE /* AppDelegate.h */,
@@ -190,56 +205,122 @@
 			path = ZYImagePickerUITests;
 			sourceTree = "<group>";
 		};
-		513152001F9605F30029052E /* ZYImagePicker */ = {
+		512576161FC805C3004A06BB /* ZYImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				513152011F9605F30029052E /* Controller */,
-				513152081F9605F30029052E /* Model */,
-				5131520B1F9605F30029052E /* Resource */,
-				5131520D1F9605F30029052E /* View */,
+				512576171FC805C3004A06BB /* Controller */,
+				512576231FC805C3004A06BB /* Model */,
+				5125762A1FC805C3004A06BB /* View */,
+				512576371FC805C3004A06BB /* Resource */,
 			);
 			path = ZYImagePicker;
 			sourceTree = "<group>";
 		};
-		513152011F9605F30029052E /* Controller */ = {
+		512576171FC805C3004A06BB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				513152021F9605F30029052E /* ZYCameraController.h */,
-				513152031F9605F30029052E /* ZYCameraController.m */,
-				513152041F9605F30029052E /* ZYClipViewController.h */,
-				513152051F9605F30029052E /* ZYClipViewController.m */,
-				513152061F9605F30029052E /* ZYImagePickerController.h */,
-				513152071F9605F30029052E /* ZYImagePickerController.m */,
+				512576181FC805C3004A06BB /* Clip */,
+				5125761B1FC805C3004A06BB /* System */,
+				5125761E1FC805C3004A06BB /* Custom */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		513152081F9605F30029052E /* Model */ = {
+		512576181FC805C3004A06BB /* Clip */ = {
 			isa = PBXGroup;
 			children = (
-				513152091F9605F30029052E /* ZYImagePicker.h */,
-				5131520A1F9605F30029052E /* ZYImagePicker.m */,
+				512576191FC805C3004A06BB /* ZYClipViewController.h */,
+				5125761A1FC805C3004A06BB /* ZYClipViewController.m */,
+			);
+			path = Clip;
+			sourceTree = "<group>";
+		};
+		5125761B1FC805C3004A06BB /* System */ = {
+			isa = PBXGroup;
+			children = (
+				5125761C1FC805C3004A06BB /* ZYImagePickerController.m */,
+				5125761D1FC805C3004A06BB /* ZYImagePickerController.h */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		5125761E1FC805C3004A06BB /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				5125761F1FC805C3004A06BB /* ZYCameraController.h */,
+				512576201FC805C3004A06BB /* ZYImageController.h */,
+				512576211FC805C3004A06BB /* ZYCameraController.m */,
+				512576221FC805C3004A06BB /* ZYImageController.m */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		512576231FC805C3004A06BB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				512576241FC805C3004A06BB /* Main */,
+				512576271FC805C3004A06BB /* Custom */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		5131520B1F9605F30029052E /* Resource */ = {
+		512576241FC805C3004A06BB /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				5131520C1F9605F30029052E /* Camera.bundle */,
+				512576251FC805C3004A06BB /* ZYImagePicker.h */,
+				512576261FC805C3004A06BB /* ZYImagePicker.m */,
 			);
-			path = Resource;
+			path = Main;
 			sourceTree = "<group>";
 		};
-		5131520D1F9605F30029052E /* View */ = {
+		512576271FC805C3004A06BB /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				5131520E1F9605F30029052E /* ZYClipBorderView.h */,
-				5131520F1F9605F30029052E /* ZYClipBorderView.m */,
-				513152101F9605F30029052E /* ZYClipView.h */,
-				513152111F9605F30029052E /* ZYClipView.m */,
+				512576281FC805C3004A06BB /* ZYPhoto.h */,
+				512576291FC805C3004A06BB /* ZYPhoto.m */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		5125762A1FC805C3004A06BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5125762B1FC805C3004A06BB /* Clip */,
+				512576301FC805C3004A06BB /* Custom */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		5125762B1FC805C3004A06BB /* Clip */ = {
+			isa = PBXGroup;
+			children = (
+				5125762C1FC805C3004A06BB /* ZYClipView.h */,
+				5125762D1FC805C3004A06BB /* ZYClipBorderView.h */,
+				5125762E1FC805C3004A06BB /* ZYClipView.m */,
+				5125762F1FC805C3004A06BB /* ZYClipBorderView.m */,
+			);
+			path = Clip;
+			sourceTree = "<group>";
+		};
+		512576301FC805C3004A06BB /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				512576311FC805C3004A06BB /* ZYImageReusableView.h */,
+				512576321FC805C3004A06BB /* ZYImageCell.h */,
+				512576331FC805C3004A06BB /* ZYImageTopBar.m */,
+				512576341FC805C3004A06BB /* ZYImageReusableView.m */,
+				512576351FC805C3004A06BB /* ZYImageCell.m */,
+				512576361FC805C3004A06BB /* ZYImageTopBar.h */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		512576371FC805C3004A06BB /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				512576381FC805C3004A06BB /* Camera.bundle */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,9 +434,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5131521B1F9606210029052E /* Camera.bundle in Resources */,
 				5118835C1F4D5B2A00CC31DE /* LaunchScreen.storyboard in Resources */,
 				511883591F4D5B2A00CC31DE /* Assets.xcassets in Resources */,
+				512576441FC805C3004A06BB /* Camera.bundle in Resources */,
 				511883571F4D5B2A00CC31DE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,16 +510,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				513152151F9606160029052E /* ZYCameraController.m in Sources */,
-				513152161F9606160029052E /* ZYClipViewController.m in Sources */,
-				513152171F9606160029052E /* ZYImagePickerController.m in Sources */,
-				513152181F9606160029052E /* ZYImagePicker.m in Sources */,
-				513152191F9606160029052E /* ZYClipBorderView.m in Sources */,
-				5131521A1F9606160029052E /* ZYClipView.m in Sources */,
+				5125763C1FC805C3004A06BB /* ZYImageController.m in Sources */,
+				512576401FC805C3004A06BB /* ZYClipBorderView.m in Sources */,
 				511883541F4D5B2A00CC31DE /* ViewController.m in Sources */,
 				511883511F4D5B2A00CC31DE /* AppDelegate.m in Sources */,
+				5125763F1FC805C3004A06BB /* ZYClipView.m in Sources */,
+				512576391FC805C3004A06BB /* ZYClipViewController.m in Sources */,
 				513152141F9605F30029052E /* ZYNavigationController.m in Sources */,
+				5125763E1FC805C3004A06BB /* ZYPhoto.m in Sources */,
+				512576421FC805C3004A06BB /* ZYImageReusableView.m in Sources */,
+				5125763A1FC805C3004A06BB /* ZYImagePickerController.m in Sources */,
+				5125763D1FC805C3004A06BB /* ZYImagePicker.m in Sources */,
+				512576431FC805C3004A06BB /* ZYImageCell.m in Sources */,
+				512576411FC805C3004A06BB /* ZYImageTopBar.m in Sources */,
 				5118834E1F4D5B2A00CC31DE /* main.m in Sources */,
+				5125763B1FC805C3004A06BB /* ZYCameraController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

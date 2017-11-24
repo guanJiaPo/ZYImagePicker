@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Xak-7B-GMP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Xak-7B-GMP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -27,20 +27,9 @@
                                     <constraint firstAttribute="height" constant="32" id="1Xc-Io-IBs"/>
                                     <constraint firstAttribute="width" constant="153" id="64f-jx-NMj"/>
                                 </constraints>
-                                <state key="normal" title="拍照时使用系统相机"/>
+                                <state key="normal" title="使用系统相机/相册"/>
                                 <connections>
                                     <action selector="selectPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vm9-SP-EwC"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f54-sl-zIU">
-                                <rect key="frame" x="111" y="223" width="153" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="153" id="SDT-uq-I97"/>
-                                    <constraint firstAttribute="height" constant="32" id="chi-RE-0gh"/>
-                                </constraints>
-                                <state key="normal" title="拍照时使用自定义相机"/>
-                                <connections>
-                                    <action selector="selectPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pdZ-d0-fvY"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pUs-8E-hSe">
@@ -51,11 +40,22 @@
                                     <constraint firstAttribute="height" constant="150" id="Pel-fx-Wmx"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f54-sl-zIU">
+                                <rect key="frame" x="91" y="224" width="192" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="192" id="SDT-uq-I97"/>
+                                    <constraint firstAttribute="height" constant="32" id="chi-RE-0gh"/>
+                                </constraints>
+                                <state key="normal" title="使用自定义相机/相册(推荐)"/>
+                                <connections>
+                                    <action selector="selectPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pdZ-d0-fvY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="f54-sl-zIU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1RL-Y6-ZYe"/>
-                            <constraint firstItem="f54-sl-zIU" firstAttribute="top" secondItem="HqW-F5-Dtc" secondAttribute="bottom" constant="16" id="A7e-M8-m0x"/>
+                            <constraint firstItem="f54-sl-zIU" firstAttribute="top" secondItem="HqW-F5-Dtc" secondAttribute="bottom" constant="17" id="A7e-M8-m0x"/>
                             <constraint firstItem="HqW-F5-Dtc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="111" id="VOf-2Y-6wA"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pUs-8E-hSe" secondAttribute="bottom" constant="118" id="g6j-Sx-D7R"/>
                             <constraint firstItem="HqW-F5-Dtc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tTF-NR-cxy"/>
@@ -69,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="721" y="116"/>
+            <point key="canvasLocation" x="720.79999999999995" y="115.59220389805098"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8QH-PF-HK1">

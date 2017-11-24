@@ -7,7 +7,6 @@
 //
 
 #import "ZYClipBorderView.h"
-//#import "UIView+Frame.h"
 
 static CGFloat kSlideWith = 40;
 

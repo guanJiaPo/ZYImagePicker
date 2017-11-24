@@ -11,7 +11,6 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import <Photos/Photos.h>
 
 @interface ZYImagePickerController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -33,40 +32,9 @@
 - (void)setUp {
     self.delegate = self;
     self.allowsEditing = NO;
-    if (self.imageSorceType == sourceType_camera) {
-        if (![self isAppCameraAccessAuthorized]) {
-            [self dismissViewControllerAnimated:NO completion:nil];
-        };
-    } else {
-        if (![self isAppPhotoLibraryAccessAuthorized]) {
-            [self dismissViewControllerAnimated:NO completion:nil];
-        };
-    }
 }
 
 #pragma mark - 相册
-
-- (BOOL)isAppCameraAccessAuthorized {
-    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        return NO;
-    }
-    
-    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-    if (authStatus == AVAuthorizationStatusRestricted || authStatus ==AVAuthorizationStatusDenied) {
-        return NO;
-    } else {
-        return YES;
-    }
-}
-
-- (BOOL)isAppPhotoLibraryAccessAuthorized {
-    ALAuthorizationStatus authStatus = [ALAssetsLibrary authorizationStatus];
-    if (authStatus == ALAuthorizationStatusRestricted || authStatus == ALAuthorizationStatusDenied) {
-        return NO;
-    } else {
-        return YES;
-    }
-}
 
 - (void)clipImage:(UIImage *)image {
     if (self.didSelectedImageBlock) {
@@ -101,13 +69,24 @@
     if (self.clippedBlock) {
         self.clippedBlock(image);
     }
-    [self saveImageToPhotoAlbum:image];
+    if (self.saveClipedImage) {
+        [self saveImageToPhotoAlbum:image];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 ///MARK: 保存至相册
 - (void)saveImageToPhotoAlbum:(UIImage*)savedImage {
     UIImageWriteToSavedPhotosAlbum(savedImage, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+}
+
+// 指定回调方法
+- (void)image: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo {
+    if(error){
+        NSLog(@"保存图片失败");
+    }else{
+        NSLog(@"保存图片成功");
+    }
 }
 
 - (BOOL)isGifWithImageData: (NSData *)data {
@@ -121,16 +100,16 @@
     uint8_t c;
     [data getBytes:&c length:1];
     switch (c) {
-        case 0xFF:
+            case 0xFF:
             return @"jpeg";
-        case 0x89:
+            case 0x89:
             return @"png";
-        case 0x47:
+            case 0x47:
             return @"gif";
-        case 0x49:
-        case 0x4D:
+            case 0x49:
+            case 0x4D:
             return @"tiff";
-        case 0x52:
+            case 0x52:
             if ([data length] < 12) {
                 return nil;
             }
@@ -166,15 +145,6 @@
     }];
 }
 
-// 指定回调方法
-- (void)image: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo {
-    if(error){
-        NSLog(@"保存图片失败");
-    }else{
-        NSLog(@"保存图片成功");
-    }
-}
-
 #pragma mark - UIImagePickerControllerDelegate
 
 // 选择照片之后
@@ -205,13 +175,9 @@
 - (void)setImageSorceType:(SourceType)imageSorceType {
     _imageSorceType = imageSorceType;
     if (imageSorceType == sourceType_camera) {
-        if ([self isAppCameraAccessAuthorized]) {
-            self.sourceType = UIImagePickerControllerSourceTypeCamera;
-        };
+        self.sourceType = UIImagePickerControllerSourceTypeCamera;
     } else {
-        if ([self isAppPhotoLibraryAccessAuthorized]) {
-            self.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-        };
+        self.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     }
 }
 
