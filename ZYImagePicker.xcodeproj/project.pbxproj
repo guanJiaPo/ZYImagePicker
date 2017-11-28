@@ -28,7 +28,6 @@
 		512576431FC805C3004A06BB /* ZYImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 512576351FC805C3004A06BB /* ZYImageCell.m */; };
 		512576441FC805C3004A06BB /* Camera.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 512576381FC805C3004A06BB /* Camera.bundle */; };
 		513152141F9605F30029052E /* ZYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 513152131F9605F30029052E /* ZYNavigationController.m */; };
-		FA9C1F7D234CF1A38C7E3A54 /* libPods-ZYImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7F42B7BA9869068EFBA169 /* libPods-ZYImagePicker.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,7 +99,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA9C1F7D234CF1A38C7E3A54 /* libPods-ZYImagePicker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,8 +246,8 @@
 			isa = PBXGroup;
 			children = (
 				5125761F1FC805C3004A06BB /* ZYCameraController.h */,
-				512576201FC805C3004A06BB /* ZYImageController.h */,
 				512576211FC805C3004A06BB /* ZYCameraController.m */,
+				512576201FC805C3004A06BB /* ZYImageController.h */,
 				512576221FC805C3004A06BB /* ZYImageController.m */,
 			);
 			path = Custom;
@@ -306,11 +304,11 @@
 			isa = PBXGroup;
 			children = (
 				512576311FC805C3004A06BB /* ZYImageReusableView.h */,
-				512576321FC805C3004A06BB /* ZYImageCell.h */,
-				512576331FC805C3004A06BB /* ZYImageTopBar.m */,
 				512576341FC805C3004A06BB /* ZYImageReusableView.m */,
+				512576321FC805C3004A06BB /* ZYImageCell.h */,
 				512576351FC805C3004A06BB /* ZYImageCell.m */,
 				512576361FC805C3004A06BB /* ZYImageTopBar.h */,
+				512576331FC805C3004A06BB /* ZYImageTopBar.m */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -330,12 +328,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 511883761F4D5B2A00CC31DE /* Build configuration list for PBXNativeTarget "ZYImagePicker" */;
 			buildPhases = (
-				A177274402F8C67B15917D89 /* [CP] Check Pods Manifest.lock */,
 				511883451F4D5B2900CC31DE /* Sources */,
 				511883461F4D5B2900CC31DE /* Frameworks */,
 				511883471F4D5B2900CC31DE /* Resources */,
-				2CD98BC2321A07D5D6DFE473 /* [CP] Embed Pods Frameworks */,
-				A32C6365055515E3B4B77B87 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -456,54 +451,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		2CD98BC2321A07D5D6DFE473 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZYImagePicker/Pods-ZYImagePicker-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A177274402F8C67B15917D89 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		A32C6365055515E3B4B77B87 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZYImagePicker/Pods-ZYImagePicker-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		511883451F4D5B2900CC31DE /* Sources */ = {

@@ -48,6 +48,11 @@
     self.titleLabel.text = title;
 }
 
+- (void)setBarTintColor:(UIColor *)barTintColor {
+    _barTintColor = barTintColor;
+    self.backgroundColor = barTintColor;
+}
+
 #pragma mark - geter
 
 - (UILabel *)titleLabel {

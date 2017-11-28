@@ -92,6 +92,13 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hiddenActivity];
             [self.collectionView reloadData];
+            NSInteger section =  [self.collectionView numberOfSections];
+            if (section > 0) {
+                NSInteger row = [self.collectionView numberOfItemsInSection:section - 1];
+                if (row > 0) {
+                    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:row - 1 inSection:section - 1] atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
+                }
+            }
         });
     });
 }

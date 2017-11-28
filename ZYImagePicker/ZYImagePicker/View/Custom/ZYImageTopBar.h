@@ -10,6 +10,7 @@
 
 @interface ZYImageTopBar : UIView
 
+@property (nonatomic, strong) UIColor *barTintColor;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) void (^cancelClickedBlock)(void);
 
