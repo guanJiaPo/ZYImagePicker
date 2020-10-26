@@ -21,6 +21,9 @@ typedef enum : NSUInteger {
 /// 裁剪框大小是否可变 默认: NO
 @property (nonatomic, assign) BOOL resizableClipArea;
 
+///选择图片后是否需要裁减 默认：NO
+@property (nonatomic, assign) BOOL isClip;
+
 /// 裁剪框尺寸, resizableClipArea为YES时 此属性无效
 @property (nonatomic, assign) CGSize clipSize;
 

@@ -9,10 +9,10 @@
 #import "ZYClipView.h"
 #import "ZYClipBorderView.h"
 
-@interface ZYScrollView : UIScrollView
+@interface ZYClipScrollView : UIScrollView
 @end
 
-@implementation ZYScrollView
+@implementation ZYClipScrollView
 
 - (void)layoutSubviews{
     [super layoutSubviews];
@@ -41,7 +41,7 @@
 
 @interface ZYClipView ()<UIScrollViewDelegate>
 
-@property (nonatomic, strong) ZYScrollView *scrollView;
+@property (nonatomic, strong) ZYClipScrollView *scrollView;
 @property (nonatomic, strong) UIImageView *originalImageView;
 @property (nonatomic, strong) ZYClipBorderView *clipBorderView;
 
@@ -262,9 +262,9 @@
     return _clipBorderView;
 }
 
-- (ZYScrollView *)scrollView {
+- (ZYClipScrollView *)scrollView {
     if (_scrollView == nil) {
-        _scrollView = [[ZYScrollView alloc]initWithFrame:self.bounds];
+        _scrollView = [[ZYClipScrollView alloc]initWithFrame:self.bounds];
         self.scrollView.showsHorizontalScrollIndicator = NO;
         self.scrollView.showsVerticalScrollIndicator = NO;
         self.scrollView.delegate = self;

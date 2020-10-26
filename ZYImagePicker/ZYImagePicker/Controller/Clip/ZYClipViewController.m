@@ -26,19 +26,23 @@
     [self.view addSubview:self.bottomBar];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:YES];
-    [UIApplication sharedApplication].statusBarHidden = YES;
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [UIApplication sharedApplication].statusBarHidden = NO;
-}
+//- (void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear:YES];
+//    [UIApplication sharedApplication].statusBarHidden = YES;
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:animated];
+//    [UIApplication sharedApplication].statusBarHidden = NO;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - event

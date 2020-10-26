@@ -62,6 +62,7 @@
             [weakSelf popViewControllerAnimated:YES];
         }
     };
+    clipViewController.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:clipViewController animated:NO completion:nil];
 }
 
@@ -81,7 +82,7 @@
 }
 
 // 指定回调方法
-- (void)image: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo {
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo: (void *)contextInfo {
     if(error){
         NSLog(@"保存图片失败");
     }else{

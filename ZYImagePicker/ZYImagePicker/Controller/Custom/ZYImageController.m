@@ -172,6 +172,7 @@
     clipViewController.clippedBlock = ^(UIImage *clippedImage) {
         [weakSelf clipped:clippedImage];
     };
+    clipViewController.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:clipViewController animated:NO completion:nil];
 }
 

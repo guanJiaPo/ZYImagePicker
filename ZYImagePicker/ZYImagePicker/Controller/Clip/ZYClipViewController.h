@@ -35,7 +35,7 @@
 @property (nonatomic, strong) UIColor *slideColor;
 
 /// 取消裁剪
-@property (nonatomic, copy) void (^cancelClipBlock)();
+@property (nonatomic, copy) void (^cancelClipBlock)(void);
 
 /// 裁剪完成的回调
 @property (nonatomic, copy) void (^clippedBlock)(UIImage *clippedImage);
